@@ -1,14 +1,17 @@
-# Use lightweight Apache image
+# Base Apache image
 FROM httpd:alpine
 
-# Remove default Apache files
+# Remove default content
 RUN rm -rf /usr/local/apache2/htdocs/*
 
-# Copy your static app files
+# Copy your static site files
 COPY . /usr/local/apache2/htdocs/
 
-# Expose Apache port
-EXPOSE 81
+# Set ServerName to suppress warning
+RUN echo "ServerName localhost" >> /usr/local/apache2/conf/httpd.conf
 
-# Start Apache in the foreground
+# Expose standard HTTP port
+EXPOSE 80
+
+# Run Apache in foreground
 CMD ["httpd", "-D", "FOREGROUND"]
