@@ -8,7 +8,7 @@ RUN rm -rf /usr/local/apache2/htdocs/*
 COPY . /usr/local/apache2/htdocs/
 
 # Expose Apache port
-EXPOSE 80
+EXPOSE 81
 
 # Start Apache in the foreground
 CMD ["httpd", "-D", "FOREGROUND"]
