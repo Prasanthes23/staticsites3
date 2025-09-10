@@ -1,0 +1,14 @@
+name: PR Trigger Workflow
+
+# Run only when a Pull Request is opened against main
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pr-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello from PR
+        run: echo "A Pull Request was opened!"
