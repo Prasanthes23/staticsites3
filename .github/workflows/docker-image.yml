@@ -1,18 +1,10 @@
-name: Docker Image CI
+name: Hello Workflow
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
-
-  build:
-
+  hello-job:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag myine-image-name:$(date +%s)
+      - name: Print Hello
+        run: echo "Hello, GitHub Actions!"
